@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<!--index.html-->
+
+{% if blogs %}
+<h1>Blogs</h1>
+<table class="table table-borderless">
+    <thead>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Writer</th>
+        <th ></th>
+        <th></th>
+    </thead>
+    {% endif %}
+    {% for blog in blogs %}
+            <tr>
+                <td>{{ blog.title }}</td>
+                <td>{{ blog.description }}</td>
+                <td>{{ blog.writer }}</td>
+                <td ><a href="{% url 'detail' blog.id %}">Show</a></td>      
+                <td>
+                    {% if blog.id in liked %}
+                    <a href="{% url 'blog_like' blog.id %}" class="text-dark"><i class="bi bi-star-fill"></i></a>_{{blog.likes.count}}
+                    {% else %}
+                    <a href="{% url 'blog_like' blog.id %}" class="text-muted"><i class="bi bi-star"></i></a>_{{blog.likes.count}}
+                    {% endif %}
+                </td>  
+            </tr>
+    {% endfor %}
+</table>
+<br>
+<a href="{% url 'create' %}">New Blog</a>
+
+{% endblock %}

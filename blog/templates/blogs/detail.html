@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<!--detail.html-->    
+    <p>
+        <strong>Title:</strong>
+        {{ blog.title }}
+    </p>
+
+    <p>
+        <strong>Description:</strong>
+        {{ blog.description }}
+    </p>
+
+    <a href="{% url 'index' %}">Back</a> |
+    {% if blog.writer == user %}
+    <a href="{% url 'edit' blog.id %}">Edit</a> |
+    <a href="{% url 'delete' blog.id %}">Delete</a>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<!--register.html-->
+
+<form id="register-frm" action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="from-group">
+        <div class="mt-2 d-flex w-100 justify-content-end">
+            <a  href="/login"><i class="fa fa-angle-left"></i> Sign In</a>
+            <button class="btn btn-primary rounded-0 btn-sm">Sign Up</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
